@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo_mysql zip mysqli imap \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd \
-    && a2enmod rewrite
+    && a2enmod rewrite \
+    && echo "ServerName crm.grintic.com" >> /etc/apache2/apache2.conf
 COPY . /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
 EXPOSE 80
